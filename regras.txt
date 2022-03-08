@@ -1,0 +1,20 @@
+13 dados:
+6 dados verdes: 3 cerebros, 2 fuga, 1 tiro
+4 dados amarelos: 2 cerebros 2 fuga 2 tiro
+3 dados vermelhos: 1 cerebros 2 fuga 3 tiro
+
+objetivo: comer 13 cerebros
+perde ao levar 3 tiros na mesma rodada
+
+na rodada o jogador pega 3 dados aleatorios o os joga
+cada cérebro acumula 1 ponto
+tiros acumulam somente na rodada
+fuga: a vitima conseguiu escapar
+após jogar os 3 dados pode parar e acumular os pontos ou continuar
+continuar:
+sempre jogara 3 dados
+jogara novamente os dados onde a vitima escapou juntamente com o numero de novos dados aleatorios para completar 3
+os dados de cérebro e tiro não são jogados novamente mas ficam acumulando os seus valores na rodada
+após a rodada acabar os pontos são somados na pontuação do jogador
+caso o jogador leve 3 tiros perde a partida
+o jogo finaliza quando 1 jogador tiver comido 13 cérebros ou os demais tenham morrido

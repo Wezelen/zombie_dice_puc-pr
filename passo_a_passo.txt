@@ -1,0 +1,10 @@
+Usuário deve informar a quantidade de jogadores
+Usuário deve informar o nome dos jogadores
+Usuário pode começar o jogo ou ler as regras
+ao digitar 'regras' aparecererá as regras do jogo
+ao digitar 'iniciar' o jogo começa
+o jogador 1 pega 3 dados e os joga
+se o jogador 1 não levou 3 tiros tem a opção de continuar ou parar
+se continuar joga 3 dados conforme a regra do jogo até levar 3 tiros(perder), conseguir 13 céreberos(vencer), ou parar.
+se parar, os cérebros são acumulados para o jogador 1 e passa para o jogador 2 que repete os mesmos passos até o ultimo jogador
+após o ultimo jogador parar o jogo volta para o jogador 1 e continua até algum jogador conseguir 13 céreberos ou sobrar apenas um jogador
