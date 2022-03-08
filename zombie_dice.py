@@ -1,4 +1,8 @@
+#adicionando bibliotecas
+from time import sleep
+
 #iniciando jogo
+#menu do jogo
 print('JOGO ZOMBIE DICE')
 menu = str(input('''digite "iniciar" para começar o jogo ou "regras" para ler as regras. ''')).lower().strip()
 if menu == 'regras': #editar as regras
@@ -26,25 +30,32 @@ caso o jogador leve 3 tiros perde a partida
 o jogo finaliza quando 1 jogador tiver comido 13 cérebros ou os demais tenham morrido''')
     print('*-*-' * 28)
     menu = str(input('digite "iniciar" para começar o jogo. ')).lower().strip()
-    print('são necessários pelo menso 2 jogadores')
+    print('são necessários entre 2-6 jogadores')
 elif menu == 'iniciar':
-    print('são necessários pelo menso 2 jogadores')
+    print('são necessários entre 2-6 jogadores')
 else:
-    print('comendo invalido tente novamente!')
+    print('comando invalido tente novamente!')
 
 #adicionando jogadores
 jogadores = []
 if menu == 'iniciar':
     nun_jogadores = int(input('digite a quantidade de jogadores: '))
-    if nun_jogadores > 1:
+    if nun_jogadores > 1 and nun_jogadores < 7:
         for nomes in range(0, nun_jogadores):
             jogador = ''.join(str(input(f'digite o nome do jogador {nomes + 1}: ')))
             jogadores += [jogador]
     else:
-        print('tente novamente')
+        print('numero de jogadores invalido')
+        sleep(1)
+        print('são necessários entre 2-6 jogadores')
+        sleep(1)
+        nun_jogadores = int(input('digite a quantidade de jogadores: '))
+        if nun_jogadores > 1:
+            for nomes in range(0, nun_jogadores):
+                jogador = ''.join(str(input(f'digite o nome do jogador {nomes + 1}: ')))
+                jogadores += [jogador]
 
-
-
+print(f'os jogadores são: {jogadores}')
 #criando dados
 '''6 dados verdes: 3 cerebros, 2 fuga, 1 tiro
    4 dados amarelos: 2 cerebros 2 fuga 2 tiro
