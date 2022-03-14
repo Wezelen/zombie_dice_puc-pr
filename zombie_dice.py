@@ -1,62 +1,73 @@
-#adicionando bibliotecas
+#adicionando Bibliotecas
+from random import choice
 from time import sleep
 
-#iniciando jogo
-#menu do jogo
-print('JOGO ZOMBIE DICE')
-menu = str(input('''digite "iniciar" para começar o jogo ou "regras" para ler as regras. ''')).lower().strip()
-if menu == 'regras': #editar as regras
-    print('*-*-' * 28)
-    #regras:
-    print('''13 dados:
-6 dados verdes: 3 cerebros, 2 fuga, 1 tiro
-4 dados amarelos: 2 cerebros 2 fuga 2 tiro
-3 dados vermelhos: 1 cerebros 2 fuga 3 tiro
+#criando os dados
+p = '👟'
+c = '🧠'
+t = '💥'
+dado_verde = [c, p, c, p, c, t]
+dado_amarelo = [c, t, p, c, t, p]
+dado_vermelho = [t, c, t, p, t, p]
+pote = []
 
-objetivo: comer 13 cerebros
-perde ao levar 3 tiros na mesma rodada
+#adicionando os 13 dados
+for dados in range(13):
+    while len(pote) < 6:
+        pote.append(dado_verde)
+    while len(pote) < 10:
+        pote.append(dado_amarelo)
+    while len(pote) < 13:
+        pote.append(dado_vermelho)
 
-na rodada o jogador pega 3 dados aleatorios o os joga
-cada cérebro acumula 1 ponto
-tiros acumulam somente na rodada
-fuga: a vitima conseguiu escapar
-após jogar os 3 dados pode parar e acumular os pontos ou continuar
-continuar:
-sempre jogara 3 dados
-jogara novamente os dados onde a vitima escapou juntamente com o numero de novos dados aleatorios para completar 3
-os dados de cérebro e tiro não são jogados novamente mas ficam acumulando os seus valores na rodada
-após a rodada acabar os pontos são somados na pontuação do jogador
-caso o jogador leve 3 tiros perde a partida
-o jogo finaliza quando 1 jogador tiver comido 13 cérebros ou os demais tenham morrido''')
-    print('*-*-' * 28)
-    menu = str(input('digite "iniciar" para começar o jogo. ')).lower().strip()
-    print('são necessários entre 2-6 jogadores')
-elif menu == 'iniciar':
-    print('são necessários entre 2-6 jogadores')
-else:
-    print('comando invalido tente novamente!')
+#Inicianco jogo
+print('Vamos jogar Zombie Dice!')
 
-#adicionando jogadores
+#criando Jogadores
 jogadores = []
-if menu == 'iniciar':
-    nun_jogadores = int(input('digite a quantidade de jogadores: '))
-    if nun_jogadores > 1 and nun_jogadores < 7:
-        for nomes in range(0, nun_jogadores):
-            jogador = ''.join(str(input(f'digite o nome do jogador {nomes + 1}: ')))
-            jogadores += [jogador]
-    else:
-        print('numero de jogadores invalido')
-        sleep(1)
-        print('são necessários entre 2-6 jogadores')
-        sleep(1)
-        nun_jogadores = int(input('digite a quantidade de jogadores: '))
-        if nun_jogadores > 1:
-            for nomes in range(0, nun_jogadores):
-                jogador = ''.join(str(input(f'digite o nome do jogador {nomes + 1}: ')))
-                jogadores += [jogador]
+num_jogadores = 0
 
-print(f'os jogadores são: {jogadores}')
-#criando dados
-'''6 dados verdes: 3 cerebros, 2 fuga, 1 tiro
-   4 dados amarelos: 2 cerebros 2 fuga 2 tiro
-   3 dados vermelhos: 1 cerebros 2 fuga 3 tiro'''
+#quantidade de jogadores
+while True:
+    try:
+        num_jogadores = int(input('digite a quantidade de jogadores:'))
+        if num_jogadores > 1:
+            print(f'A quantidade de jogadores sera de {num_jogadores}')
+            break
+        else:
+            print('É necessario pelo menos 2 jogadores')
+    except:
+        print('Valor invalido')
+
+#nomeando jogadores
+for nomes in range(num_jogadores):
+    jogador = str(input('Digite o nome do {}° jogador: ' .format(nomes + 1)))
+    jogadores.append(jogador)
+    
+
+#função para sortear dados
+""" def sortear_dados(dado):
+    pass """
+
+""" dados_para_sortear = pote
+dados_sorteados = []
+resultado = []
+contador_tiros = 
+
+for pegar_dados in range(0, 3): #sorteia 3 dados do pote
+    dados_sorteados.append(choice(dados_para_sortear))
+    dados_para_sortear.remove(dados_sorteados[pegar_dados])
+
+for jogar_dados in range(0, 3): #roda os 3 dados sorteados
+    sorteado = choice(dados_sorteados)
+    print(sorteado)
+    resultado.append(choice(sorteado[jogar_dados]))
+    dados_sorteados.remove(sorteado)
+    if resultado[jogar_dados] == c:
+        pass
+    elif resultado[jogar_dados] == t:
+        pass
+    else: #funcionando
+        dados_para_sortear.append(sorteado)
+    
+     """
