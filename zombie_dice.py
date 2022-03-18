@@ -1,6 +1,9 @@
+'''Nome: Wezelen Gomes dos Santos Junior
+   curso: Analise e desenvolvimento de sistemas'''
+
+
 #adicionando Bibliotecas
 from random import choice
-from time import sleep
 
 #criando os dados
 p = '👟'
@@ -33,7 +36,7 @@ num_jogadores = 0
 #quantidade de jogadores
 while True:
     try:
-        num_jogadores = int(input('digite a quantidade de jogadores:'))
+        num_jogadores = int(input('digite a quantidade de jogadores: '))
         if num_jogadores > 1:
             print(f'A quantidade de jogadores sera de {num_jogadores}')
             break
@@ -45,67 +48,74 @@ while True:
 #nomeando jogadores
 for nomes in range(0, num_jogadores):
     jogador = str(input('Digite o nome do {}° jogador: '.format(nomes + 1)))
-    contador = [jogador, '']
+    contador = [jogador, ''] #para adicionar os pontos do jogador
     jogadores.append(contador)
 
-
 #função para sortear dados
-""" def sortear_dados(dado):
-    pass """
 pontos_rodada = ['', '', '']
+dados_no_pote = pote
+dados_na_mão = []
+
+passos = []
 while len(pontos_rodada[1]) <= 3:
-    dados_no_pote = pote
-    dados_na_mão = []
-    cor_dados = [] #limpar antes do novo ciclo
     resultado = []
-    passos = []
-    
-    if len(pontos_rodada[1]) >= 3:
+    cor_dados = []
+
+    if len(pontos_rodada[1]) >= 3: #checa se o jogador ja levou 3 tiros jna rodada
         print('o jogador tomou pelo menos 3 tiros')
         break
-    print('deseja continuar?')
-    continuar = str(input('[S] [N]')).strip()
+    print('deseja pegar os dados?')
+    continuar = str(input('[S] [N]  ')).strip()
+    
+
     if continuar in 'Ss':
         pass
     elif continuar in 'Nn':
-        jogadores[0][1] += pontos_rodada[0] #########################
+        jogadores[0][1] += pontos_rodada[0] #ainda preciso configurar para mais jogadores   ########
         break
 
-    if len(dados_no_pote) + len(passos) > 3:
-        for pegar_dados in range(0, 3 - len(passos)): #sorteia 3 dados do pote
-            dados_na_mão.append(choice(dados_no_pote))
+
+    if len(dados_no_pote) + len(passos) > 3: #checa se ainda é possivel ter 3 dados para jogar
+        #sorteia dados até completar 3 na mão
+        for pegar_dados in range(0, 3):
+            if len(passos) > 0:
+                for r in range(0, len(passos)):
+                    dados_na_mão.append(passos[0])
+                    passos.remove(passos[0])
+            else:
+                dados_na_mão.append(choice(dados_no_pote))
             #acumulando a cor dos 3 dados
             if dados_na_mão[pegar_dados] == dado_vermelho:
                 cor_dados.append(vermelho)
-            if dados_na_mão[pegar_dados] == dado_amarelo:
+            elif dados_na_mão[pegar_dados] == dado_amarelo:
                 cor_dados.append(amarelo)
-            if dados_na_mão[pegar_dados] == dado_verde:
+            elif dados_na_mão[pegar_dados] == dado_verde:
                 cor_dados.append(verde)
-            dados_no_pote.remove(dados_na_mão[pegar_dados])
-        print(f'você pegou os dados: {cor_dados}')
-        jogar = str(input('precione enter para rolar os dados'))
-    else:
+            try:
+                dados_no_pote.remove(dados_na_mão[pegar_dados])
+            except:
+                pass
+        print(f'você pegou os dados: {cor_dados[0]} {cor_dados[1]} {cor_dados[2]}')        
+    else: #quando a quantidade de dasos não soma 3 dados, interrompe o ciclo e soma os pontos ao jogador
         print('não a mais dados suficientes para uma nova jogada')
-        jogadores[0][1] += pontos_rodada[0]
+        jogadores[0][1] += pontos_rodada[0] #ainda preciso configurar para mais jogadores   ########
         break
 
-    
-    for jogar_dados in range(0, 3 - len(passos)): #roda os 3 dados sorteados
-        sorteado = choice(dados_na_mão)
-        resultado.append(choice(sorteado[jogar_dados]))
-        dados_na_mão.remove(sorteado)
-        if len(passos) > 0:
-            for r in range(0, len(passos)):
-                passos.append(choice(passos[r]))
+
+    jogar = str(input('precione enter para rolar os dados'))
+    for jogar_dados in range(0, 3): #roda os 3 dados sorteados e adiciona soma os resultados nos pontos da rodada
+        resultado.append(choice(dados_na_mão[0]))    
         if resultado[jogar_dados] == c:
             pontos_rodada[0] += c
         elif resultado[jogar_dados] == t:
             pontos_rodada[1] += t
         else:
             pontos_rodada[2] += p
-            passos.append(sorteado)
-    print(resultado)
-    resultado = []
+            passos.append(dados_na_mão[0])
+        dados_na_mão.remove(dados_na_mão[0])
+
+
+    print(f'{cor_dados[0]} → {resultado[0]}\n{cor_dados[1]} → {resultado[1]}\n{cor_dados[2]} → {resultado[2]}')
     print(pontos_rodada)
     
-print(f'{jogadores[0][0]} comeu "{len(jogadores[0][1])}"') #####################
+print(f'{jogadores[0][0]} comeu "{len(jogadores[0][1])}"') #ainda preciso configurar para mais jogadores   ########
