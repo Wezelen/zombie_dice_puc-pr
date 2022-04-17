@@ -1,19 +1,20 @@
-13 dados:
-6 dados verdes: 3 cerebros, 2 fuga, 1 tiro
-4 dados amarelos: 2 cerebros 2 fuga 2 tiro
-3 dados vermelhos: 1 cerebros 2 fuga 3 tiro
-
 objetivo: comer 13 cerebros
+neste jogo cada dado representa uma vítima, e seu objetivo é comer os céreberos delas.
+os dados possuem 3 simbolos:
+🧠 cerebro - você devorou sua vítima com sucesso
+💥 tiro    - sua vítima atirou em você
+👟 pegadas - sua vítima correu
+existem 3 tipos de dados:
+🟩 o dado verde é uma vitima mais fraca.    - 3 🧠, 2 👟 e 1 💥
+🟨 o dado amarelo é uma vitima normal.      - 2 🧠, 2 👟 e 2 💥
+🟥 o dado vermelho é uma vitima mais forte. - 1 🧠, 2 👟 e 3 💥 
+- o jogador pega 3 dados aleatorios e os joga (cada jogada é nescesario jogar 3 dados)
+- após cada jogada o jogador pode decidir se deseja continuar jogando
+- os dados que forem pegadas(👟) seram jogados novamente, juntamente com mais dados aleatorios,
+completando os 3 dados nescesario para a jogada
+- se o jogador tomar 3 tiros durante sua rodada ele perde todos os cérebros acumulados na rodada e
+passa sua vez para o proximo jogador
+o jogo acaba quando algum jogador comer 13 cerebros
 
-na rodada o jogador pega 3 dados aleatorios o os joga
-cada cérebro acumula 1 ponto
-tiros acumulam somente na rodada
-fuga: a vitima conseguiu escapar
-após jogar os 3 dados pode parar e acumular os pontos ou continuar
-continuar:
-sempre jogara 3 dados
-jogara novamente os dados onde a vitima escapou juntamente com o numero de novos dados aleatorios para completar 3
-os dados de cérebro e tiro não são jogados novamente mas ficam acumulando os seus valores na rodada
-após a rodada acabar os pontos são somados na pontuação do jogador
-caso o jogador leve 3 tiros perde os cérebros da rodada e passa a vez
-o jogo finaliza quando algum jogador tiver comido 13 cérebros
+
+
